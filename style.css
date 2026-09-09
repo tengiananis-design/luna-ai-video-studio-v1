@@ -1,0 +1,172 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0d12;
+  color: #f4f5f7;
+}
+
+.app {
+  width: min(1000px, 94%);
+  margin: auto;
+  padding: 20px 0 60px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.brand span {
+  opacity: .55;
+  font-size: 11px;
+}
+
+.status {
+  font-size: 11px;
+  opacity: .7;
+}
+
+.hero, .panel {
+  background: #131720;
+  border: 1px solid #242936;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(30px, 7vw, 54px);
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  color: #aeb4c0;
+  margin-bottom: 30px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  color: #aeb4c0;
+  margin-bottom: 8px;
+}
+
+textarea, select {
+  width: 100%;
+  background: #0b0d12;
+  color: white;
+  border: 1px solid #303644;
+  border-radius: 12px;
+  padding: 13px;
+  outline: none;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.results h2 {
+  margin-top: 0;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 7px 10px;
+  background: #202532;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.beat, .scene {
+  background: #0d1016;
+  border: 1px solid #262c38;
+  border-radius: 12px;
+  padding: 14px;
+  margin: 8px 0;
+}
+
+.beat strong, .scene strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.scene small {
+  color: #8e96a5;
+}
+
+.continuity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+li {
+  margin-bottom: 8px;
+  color: #b8bec9;
+  font-size: 13px;
+}
+
+.timeline-bar {
+  height: 42px;
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #0a0c10;
+}
+
+.timeline-segment {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border-right: 1px solid #0b0d12;
+}
+
+.hidden { display: none; }
+
+#error {
+  margin-top: 12px;
+  color: #ff8d8d;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .controls, .continuity-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luna AI Video Studio</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="brand">LUNA <span>AI VIDEO STUDIO</span></div>
+      <div id="health" class="status">● CONNECTING</div>
+    </header>
+
+    <section class="hero">
+      <h1>Turn an idea into a directed video.</h1>
+      <p>Luna plans the story, scenes, continuity and timeline before generation.</p>
+
+      <label for="topic">What do you want to create?</label>
+      <textarea id="topic" placeholder="Example: Zeus discovers Mount Olympus is under attack..."></textarea>
+
+      <div class="controls">
+        <div>
+          <label>Duration</label>
+          <select id="duration">
+            <option value="15">15 sec</option>
+            <option value="30" selected>30 sec</option>
+            <option value="45">45 sec</option>
+            <option value="60">60 sec</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Style</label>
+          <select id="style">
+            <option>Cinematic</option>
+            <option>Realistic</option>
+            <option>Anime</option>
+            <option>Fantasy</option>
+            <option>Documentary</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Mode</label>
+          <select id="mode">
+            <option>Cinematic</option>
+            <option>Fast</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="create">CREATE PROJECT</button>
+      <div id="error"></div>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="panel">
+        <h2 id="projectTitle"></h2>
+        <div id="projectMeta"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Director</h2>
+        <p id="strategy"></p>
+        <div id="priorities" class="chips"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Story Beats</h2>
+        <div id="beats"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Scene Cards</h2>
+        <div id="scenes"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Continuity Engine</h2>
+        <div class="continuity-grid">
+          <div><h3>Hard</h3><ul id="hard"></ul></div>
+          <div><h3>Soft</h3><ul id="soft"></ul></div>
+          <div><h3>Creative</h3><ul id="creative"></ul></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Timeline</h2>
+        <div id="timeline"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
