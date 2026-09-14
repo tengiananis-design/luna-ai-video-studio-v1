@@ -1,98 +1,468 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
   <title>Luna AI Video Studio</title>
-  <link rel="stylesheet" href="/style.css">
+
+  <link rel="stylesheet" href="/style.css" />
 </head>
+
 <body>
-  <main class="app">
-    <header>
-      <div class="brand">LUNA <span>AI VIDEO STUDIO</span></div>
-      <div id="health" class="status">● CONNECTING</div>
-    </header>
 
-    <section class="hero">
-      <h1>Turn an idea into a directed video.</h1>
-      <p>Luna plans the story, scenes, continuity and timeline before generation.</p>
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
 
-      <label for="topic">What do you want to create?</label>
-      <textarea id="topic" placeholder="Example: Zeus discovers Mount Olympus is under attack..."></textarea>
+  <header class="topbar">
 
-      <div class="controls">
-        <div>
-          <label>Duration</label>
+    <div class="brand">
+      <div class="brand-mark">L</div>
+
+      <div>
+        <div class="brand-name">LUNA AI VIDEO STUDIO</div>
+        <div class="brand-subtitle">
+          Story → Scenes → Continuity → Video
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+
+      <div id="health" class="health">
+        CHECKING...
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main class="container">
+
+    <!-- =======================================================
+         HERO / PROJECT CREATOR
+    ======================================================== -->
+
+    <section class="hero panel">
+
+      <div class="eyebrow">
+        AI VIDEO DIRECTOR
+      </div>
+
+      <h1>
+        Turn an idea into a cinematic video.
+      </h1>
+
+      <p class="hero-text">
+        Describe your story. Luna builds the story structure,
+        plans the scenes, maintains continuity, then sends the
+        finished scene prompts to the production engine.
+      </p>
+
+
+      <!-- STORY INPUT -->
+
+      <div class="field">
+
+        <label for="topic">
+          STORY / IDEA
+        </label>
+
+        <textarea
+          id="topic"
+          rows="6"
+          placeholder="Example: Zeus descends from Mount Olympus to warn humanity about an approaching storm..."
+        ></textarea>
+
+      </div>
+
+
+      <!-- CONTROLS -->
+
+      <div class="controls-grid">
+
+        <div class="field">
+
+          <label for="duration">
+            DURATION
+          </label>
+
           <select id="duration">
-            <option value="15">15 sec</option>
-            <option value="30" selected>30 sec</option>
-            <option value="45">45 sec</option>
-            <option value="60">60 sec</option>
+
+            <option value="15">
+              15 seconds
+            </option>
+
+            <option value="30" selected>
+              30 seconds
+            </option>
+
+            <option value="45">
+              45 seconds
+            </option>
+
+            <option value="60">
+              60 seconds
+            </option>
+
           </select>
+
         </div>
 
-        <div>
-          <label>Style</label>
+
+        <div class="field">
+
+          <label for="style">
+            VISUAL STYLE
+          </label>
+
           <select id="style">
-            <option>Cinematic</option>
-            <option>Realistic</option>
-            <option>Anime</option>
-            <option>Fantasy</option>
-            <option>Documentary</option>
+
+            <option value="Cinematic" selected>
+              Cinematic
+            </option>
+
+            <option value="Realistic">
+              Realistic
+            </option>
+
+            <option value="Anime">
+              Anime
+            </option>
+
+            <option value="Fantasy">
+              Fantasy
+            </option>
+
+            <option value="Documentary">
+              Documentary
+            </option>
+
           </select>
+
         </div>
+
+
+        <div class="field">
+
+          <label for="mode">
+            DIRECTING MODE
+          </label>
+
+          <select id="mode">
+
+            <option value="Cinematic" selected>
+              Cinematic
+            </option>
+
+            <option value="Fast">
+              Fast
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <!-- CREATE BUTTON -->
+
+      <div class="creator-actions">
+
+        <button
+          id="createProjectBtn"
+          class="primary"
+          type="button"
+        >
+          CREATE PROJECT
+        </button>
+
+      </div>
+
+
+      <!-- STATUS -->
+
+      <div
+        id="status"
+        class="status"
+        aria-live="polite"
+      >
+        Ready.
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         DIRECTOR
+    ======================================================== -->
+
+    <section
+      id="director"
+      class="panel result-panel"
+    >
+
+      <div class="empty-panel">
+
+        <span class="panel-number">
+          01
+        </span>
 
         <div>
-          <label>Mode</label>
-          <select id="mode">
-            <option>Cinematic</option>
-            <option>Fast</option>
-          </select>
+
+          <h2>
+            Director
+          </h2>
+
+          <p>
+            Create a project to activate the AI director.
+          </p>
+
         </div>
+
       </div>
 
-      <button id="create">CREATE PROJECT</button>
-      <div id="error"></div>
     </section>
 
-    <section id="results" class="results hidden">
-      <div class="panel">
-        <h2 id="projectTitle"></h2>
-        <div id="projectMeta"></div>
-      </div>
 
-      <div class="panel">
-        <h2>Director</h2>
-        <p id="strategy"></p>
-        <div id="priorities" class="chips"></div>
-      </div>
 
-      <div class="panel">
-        <h2>Story Beats</h2>
-        <div id="beats"></div>
-      </div>
+    <!-- =======================================================
+         STORY
+    ======================================================== -->
 
-      <div class="panel">
-        <h2>Scene Cards</h2>
-        <div id="scenes"></div>
-      </div>
+    <section
+      id="storyBeats"
+      class="panel result-panel"
+    >
 
-      <div class="panel">
-        <h2>Continuity Engine</h2>
-        <div class="continuity-grid">
-          <div><h3>Hard</h3><ul id="hard"></ul></div>
-          <div><h3>Soft</h3><ul id="soft"></ul></div>
-          <div><h3>Creative</h3><ul id="creative"></ul></div>
+      <div class="empty-panel">
+
+        <span class="panel-number">
+          02
+        </span>
+
+        <div>
+
+          <h2>
+            Story Beats
+          </h2>
+
+          <p>
+            Luna will structure the story before generation.
+          </p>
+
         </div>
+
       </div>
 
-      <div class="panel">
-        <h2>Timeline</h2>
-        <div id="timeline"></div>
-      </div>
     </section>
+
+
+
+    <!-- =======================================================
+         SCENE CARDS
+    ======================================================== -->
+
+    <section
+      id="sceneCards"
+      class="panel result-panel"
+    >
+
+      <div class="empty-panel">
+
+        <span class="panel-number">
+          03
+        </span>
+
+        <div>
+
+          <h2>
+            Scene Cards
+          </h2>
+
+          <p>
+            Planned scenes will appear here.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         CONTINUITY
+    ======================================================== -->
+
+    <section
+      id="continuity"
+      class="panel result-panel"
+    >
+
+      <div class="empty-panel">
+
+        <span class="panel-number">
+          04
+        </span>
+
+        <div>
+
+          <h2>
+            Continuity Engine
+          </h2>
+
+          <p>
+            Character, location and story continuity will be
+            tracked across scenes.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         TIMELINE
+    ======================================================== -->
+
+    <section
+      id="timeline"
+      class="panel result-panel"
+    >
+
+      <div class="empty-panel">
+
+        <span class="panel-number">
+          05
+        </span>
+
+        <div>
+
+          <h2>
+            Timeline
+          </h2>
+
+          <p>
+            Scene timing will appear here.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         PRODUCTION
+         
+         app.js creates/updates this section after a project
+         has been successfully planned.
+    ======================================================== -->
+
+    <section
+      id="productionControls"
+      class="panel production-panel"
+      style="display:none;"
+    >
+
+      <div class="production-header">
+
+        <div>
+
+          <div class="eyebrow">
+            VIDEO PRODUCTION
+          </div>
+
+          <h2>
+            Production Engine
+          </h2>
+
+          <p class="muted">
+            Your planned scenes are ready for generation.
+          </p>
+
+        </div>
+
+        <button
+          id="generateVideoBtn"
+          class="primary"
+          type="button"
+        >
+          GENERATE VIDEO
+        </button>
+
+      </div>
+
+
+      <div
+        id="productionStatus"
+        class="production-status"
+        aria-live="polite"
+      >
+        Ready to generate.
+      </div>
+
+
+      <div
+        id="productionScenes"
+        class="production-scenes"
+      ></div>
+
+
+      <div
+        id="productionOutput"
+        class="production-output"
+      ></div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         FOOTER
+    ======================================================== -->
+
+    <footer class="footer">
+
+      <div>
+        LUNA AI VIDEO STUDIO
+      </div>
+
+      <div>
+        Story-driven AI video production
+      </div>
+
+    </footer>
+
   </main>
 
+
+  <!-- =========================================================
+       APP
+  ========================================================== -->
+
   <script src="/app.js"></script>
+
 </body>
 </html>
+```
